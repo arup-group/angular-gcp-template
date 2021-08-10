@@ -1,0 +1,129 @@
+.login-page {
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  height: 440px;
+}
+
+.mat-card-header {
+  background-color: #3d3d3d !important;
+  padding: 5px !important;
+  color: white;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  text-align: left;
+}
+
+.mat-card-header-text {
+  text-align: left;
+  width: 100%;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.mat-card {
+  padding: 0 !important;
+}
+
+.transparent-layer {
+  background-color: #ffffff;
+  opacity: 1;
+  height: 100%;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  border-radius: 10px;
+  // position: absolute;
+}
+
+.login-container {
+  // max-height: calc(100vh - 64px);
+  height: 95%;
+  width: 35%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 1%;
+  // position: absolute;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 1vh;
+}
+
+.login-info {
+  margin-left: 30px;
+  margin-right: 30px;
+  margin-top: 15px;
+}
+
+.header-text {
+  margin: 30px;
+}
+
+.login-button {
+  height: 50px;
+  width: 100px;
+}
+
+.login-button-container {
+  text-align: center;
+}
+
+.sign-up {
+  color: #828282;
+  bottom: 0;
+  // position: absolute;
+  margin-left: 30px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.sign-up-link {
+  font-weight: 550;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.forgot-password {
+  color: #828282;
+  // position: absolute;
+  margin-left: 30px;
+  margin-top: 15px;
+  margin-bottom: 0px;
+}
+
+.forgot-password-text {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.mat-form-field-required-wrapper {
+}
+.label {
+  margin-top: 5px;
+}
+
+.card {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+@media (max-width: 800px) {
+  .login-container {
+    width: 70%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1%;
+  }
+}

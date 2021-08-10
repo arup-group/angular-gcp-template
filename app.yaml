@@ -1,0 +1,23 @@
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+  - url: /(.*\.(gif|png|jpg|css|js)(|\.map))$
+    static_files: dist/<YOUR_PROJECT>-frontend/\1
+    upload: dist/<YOUR_PROJECT>-frontend/(.*)(|\.map)
+
+  - url: /(.*)
+    static_files: dist/<YOUR_PROJECT>-frontend/index.html
+    upload: dist/<YOUR_PROJECT>-frontend/index.html
+
+skip_files:
+  - e2e/
+  - node_modules/
+  - api/
+  - src/
+  - ^(.*/)?\..*$
+  - ^(.*/)?.*\.json$
+  - ^(.*/)?.*\.md$
+  - ^(.*/)?.*\.yaml$
+  - ^LICENSE

@@ -1,0 +1,11 @@
+<div class="toolbar-container">
+  <mat-toolbar class="toolbar">
+    <h1 class="text link" [routerLink]="['/projects/']">PROJECT_NAME</h1>
+      <div class="logout-button-container" *ngIf="isLoggedIn()">
+        <div class="display-name-container">
+          <h5 class="display-name">{{ displayName }}</h5>
+        </div>
+        <button mat-raised-button class="logout-button" color="primary" (click)="authService.SignOut()">Logout</button>
+      </div>
+  </mat-toolbar>
+</div>

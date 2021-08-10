@@ -1,0 +1,45 @@
+service: node-api
+provider:
+  name: google
+  stage: dev
+  runtime: nodejs10
+  region: us-west2
+  project: <PROJECT_ID> #google account project name
+  credentials: ~/.gcloud/keyfile.json # path must be absolute
+plugins:
+  - serverless-google-cloudfunctions
+package:
+  exclude:
+    - node_modules/**
+    - .gitignore
+    - .git/**
+frameworkVersion: '2'
+
+functions:
+  hello:
+    handler: http
+    events:
+      - http: path
+  pubsub:
+    handler: pubSub
+    events:
+      - event:
+          eventType: providers/cloud.pubsub/eventTypes/topic.publish
+          resource: 'projects/${self:provider.project, ""}/topics/model-status'
+  # NOTE: the following uses an "event" event (pubSub event in this case).
+  # Please create the corresponding resources in the Google Cloud
+  # before deploying this service through Serverless
+  #second:
+  #  handler: event
+  #  events:
+  #    - event:
+  #        eventType: providers/cloud.pubsub/eventTypes/topic.publish
+  #        resource: projects/*/topics/my-topic
+# you can define resources, templates etc. the same way you would in a
+# Google Cloud deployment configuration
+#resources:
+#  resources:
+#    - type: storage.v1.bucket
+#      name: my-serverless-service-bucket
+#  imports:
+#    - path: my_template.jinja

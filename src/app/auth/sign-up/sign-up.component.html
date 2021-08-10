@@ -1,0 +1,34 @@
+<div class="login-page">
+  <div class="sign-up-container flex-container">
+    <mat-card class="transparent-layer">
+      <mat-card-header>
+        <mat-card-title
+          class="header-text"
+          style="margin-left: 0px; margin-right: 0px; margin-top: 12px"
+        >
+        Create an account
+        </mat-card-title>
+      </mat-card-header>
+      <div class="authBlock">
+<!--        <h1 class="header-text">Sign Up</h1>-->
+        <div class="formGroup">
+          <form class="sign-up-info flex-column">
+            <p>Create an account.</p>
+            <mat-form-field class="example-full-width" appearance="outline" color="primary">
+              <input matInput type="email" class="formControl" placeholder="Email Address" #userEmail required>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="outline" color="primary">
+              <input matInput type="password" class="formControl" placeholder="Password" #userPwd required>
+            </mat-form-field>
+          </form>
+        </div>
+        <div class="sign-up-button-container">
+          <button mat-raised-button color="accent" class="sign-up-button" value="Sign Up" (click)="authService.SignUp(userEmail.value, userPwd.value)">Sign Up</button>
+        </div>
+      <div class="login">
+        <span>Already have an account? <span class="login-link" routerLink="/login">Log In</span></span>
+      </div>
+      </div>
+    </mat-card>
+  </div>
+</div>
