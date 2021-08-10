@@ -1,0 +1,32 @@
+steps:
+  # Install node packages
+  - name: "gcr.io/cloud-builders/npm:latest"
+    args: [ "install" ]
+    dir: "<YOUR_PROJECT>-frontend"
+    timeout: '1600s'
+  # Build production package
+  - name: "gcr.io/<YOUR_PROJECT>/npm:latest"
+    args: [ "build" ]
+    dir: "<YOUR_PROJECT>-frontend"
+    timeout: '1600s'
+
+  # Deploy to google cloud app engine
+  - name: "gcr.io/cloud-builders/gcloud"
+    args: [ "app", "deploy", "--version=prod" ]
+    dir: "<YOUR_PROJECT>-frontend"
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - functions
+      - deploy
+      - "<YOUR_PROJECT>-python-api"
+      - --source=./python-api/
+      - --trigger-http
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - functions
+      - deploy
+      - "<YOUR_PROJECT>-node-api"
+      - --source=./node-api/
+      - --trigger-http
+timeout: '1600s'

@@ -1,0 +1,49 @@
+<div class="login-page">
+  <div class="login-container flex-container">
+    <mat-card class="transparent-layer">
+      <mat-card-header>
+        <mat-card-title
+          class="header-text"
+          style="margin-left: 0px; margin-right: 0px; margin-top: 12px"
+          >
+          PROJECT_NAME
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="authBlock"></div>
+        <form class="login-info flex-column">
+          <mat-form-field class="example-full-width" appearance="outline" color="primary">
+            <input matInput placeholder="Username" #userName required />
+          </mat-form-field>
+          <mat-form-field class="example-full-width" appearance="outline" color="primary">
+            <input
+              matInput
+              placeholder="Password"
+              #userPassword
+              required
+              type="password"
+              (keyup.enter)="authService.SignIn(userName.value, userPassword.value)"/>
+          </mat-form-field>
+        </form>
+        <div class="login-button-container">
+          <button
+            mat-raised-button
+            color="accent"
+            class="login-button"
+            value="Log in"
+            (click)="authService.SignIn(userName.value, userPassword.value)">
+            Login
+          </button>
+        </div>
+        <div class="flex-column">
+          <div class="forgot-password">
+            <span class="forgot-password-text" routerLink="/forgot-password">Forgot Password?</span>
+          </div>
+          <div class="sign-up">
+            <span>Don't have an account?<span class="sign-up-link" routerLink="/register-user" > Sign Up</span></span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

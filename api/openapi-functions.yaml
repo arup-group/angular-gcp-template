@@ -1,0 +1,126 @@
+swagger: "2.0"
+info:
+  title: "Template Project"
+  description: "API for some project"
+  version: "1.0.0"
+# This field will be replaced by the deploy_api.sh script.
+host: <gateway-host>
+x-google-endpoints:
+  - name: "<gateway-uri>"
+    allowCors: True
+schemes:
+  - https
+produces:
+  - application/json
+security:
+  - api_key: [ ]
+securityDefinitions:
+  # This section configures basic authentication with an API key.
+  api_key:
+    type: "apiKey"
+    name: "key"
+    in: "query"
+parameters:
+  param:
+    in: path
+    name: param
+    type: string
+    required: true
+    description: A sample query parameter
+paths:
+  /hello:
+    get:
+      summary: Hello world
+      operationId: hello
+      x-google-backend:
+        address: https://<YOUR_URL>/python-api-dev-hello
+        protocol: h2
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+  /tables:
+    get:
+      summary: List available tables
+      operationId: list_tables
+      x-google-backend:
+        address: https://<YOUR_URL>/python-api-dev-list-tables
+        protocol: h2
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+  /tables/{table_name}:
+    get:
+      summary: Select all data from a table
+      operationId: table_data
+      x-google-backend:
+        address: https://<YOUR_URL>/python-api-dev-get-table-data
+        protocol: h2
+      parameters:
+        - $ref: '#/parameters/<PARAM>'
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+  /tables/{table_name}/columns:
+    get:
+      summary: Get columns for a table
+      operationId: table_columns
+      x-google-backend:
+        address: https://<YOUR_URL>/python-api-dev-get-table-schema
+        protocol: h2
+      parameters:
+        - $ref: '#/parameters/<PARAM>'
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+  /tables/{table_name}/select:
+    get:
+      summary: Select column data from a table
+      operationId: table_select_columns
+      x-google-backend:
+        address: https://<YOUR_URL>/python-api-dev-select-from
+        protocol: h2
+      parameters:
+        - $ref: '#/parameters/<PARAM>'
+        - in: query
+          name: columns
+          type: array
+          items:
+            type: string
+          minItems: 1
+          description: List of columns to query, comma separated
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+  /query:
+    get:
+      summary: Select column data from a table
+      operationId: query
+      x-google-backend:
+        address: https://<YOUR_URL>/python-api-dev-sql-query
+        protocol: h2
+      parameters:
+        - in: query
+          name: query_string
+          required: true
+          type: string
+          description: A valid SQL query statement
+      responses:
+        '200':
+          description: A successful response
+          schema:
+            type: string
+
+# Upload new API config
+# gcloud api-gateway api-configs create [CONFIG-NAME] --api=gateway --openapi-spec=openapi-functions.yaml --project=swl-energy-modelling
+# Update gateway config
+# gcloud api-gateway gateways update gateway --api-config=[CONFIG-NAME] --api=gateway --location=us-central1 --project=swl-energy-modelling

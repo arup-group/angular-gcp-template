@@ -1,0 +1,20 @@
+[
+  {
+    "origin": ["http://localhost:4200/"],
+    "method": ["GET"],
+    "responseHeader": ["*"],
+    "maxAgeSeconds": 60
+  },
+  {
+    "origin": ["https://<YOUR_URL>/"],
+    "method": ["GET"],
+    "responseHeader": ["*"],
+    "maxAgeSeconds": 60
+  },
+  {
+    "origin": ["*"],
+    "method": ["*"],
+    "responseHeader": ["*"],
+    "maxAgeSeconds": 60
+  }
+]

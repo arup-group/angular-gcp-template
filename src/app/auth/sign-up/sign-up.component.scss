@@ -1,0 +1,102 @@
+.login-page {
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  height: 440px;
+}
+
+.transparent-layer {
+  background-color: #ffffff;
+  opacity: .9;
+  height: 100%;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  border-radius: 10px;
+  //position: absolute;
+}
+
+.sign-up-container {
+  // max-height: calc(100vh - 64px);
+  height: 95%;
+  width: 35%;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 1%;
+  // position: absolute;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 1vh;
+}
+
+.header-text {
+  margin: 30px;
+}
+
+.sign-up-button-container {
+  text-align: center;
+}
+
+.sign-up-info {
+  margin: 30px;
+}
+
+.login {
+  color: #828282;
+  bottom: 0;
+  // position: absolute;
+  margin-left: 30px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.login-link {
+  font-weight: 550;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+
+.mat-card-header {
+  background-color: #3d3d3d !important;
+  padding: 5px !important;
+  color: white;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  text-align: left;
+}
+
+
+.mat-card-header-text {
+  text-align: left;
+  width: 100%;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.mat-card {
+  padding: 0 !important;
+}
+
+.transparent-layer {
+  background-color: #ffffff;
+  opacity: 1;
+  height: 100%;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  border-radius: 10px;
+  // position: absolute;
+}
+
+.card {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}

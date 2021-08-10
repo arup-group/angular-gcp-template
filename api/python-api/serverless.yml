@@ -1,0 +1,89 @@
+service: python-api
+
+provider:
+  name: google
+  stage: dev
+  runtime: python37
+  region: us-west2
+  project: <PROJECT_NAME>
+  # The GCF credentials can be a little tricky to set up. Luckily we've documented this for you here:
+  # https://serverless.com/framework/docs/providers/google/guide/credentials/
+  #
+  # the path to the credentials file needs to be absolute
+  credentials: ~/.gcloud/serverless-keyfile.json
+
+frameworkVersion: '2'
+plugins:
+  - serverless-google-cloudfunctions
+
+# needs more granular excluding in production as only the serverless provider npm
+# package should be excluded (and not the whole node_modules directory)
+package:
+  exclude:
+    - node_modules/**
+    - venv/**
+    - .gitignore
+    - .git/**
+
+functions:
+  cors-handler:
+    handler: cors_handler
+    events:
+      - http: path
+        cors: true
+  test-connection:
+    handler: test_connection
+    events:
+      - http: path
+        cors: true
+  hello:
+    handler: hello
+    events:
+      - http: path
+        cors: true
+  get-table-data:
+    handler: get_all_table_data
+    events:
+      - http: path
+        cors: true
+  select-from:
+    handler: generic_select_query
+    events:
+      - http: path
+        cors: true
+  select-from-where:
+    handler: generic_select_where_query
+    events:
+      - http: path
+        cors: true
+  sql-query:
+    handler: query
+    events:
+      - http: path
+        cors: true
+  list-tables:
+    handler: list_tables
+    events:
+      - http: path
+        cors: true
+  get-table-schema:
+    handler: get_table_schema
+    events:
+      - http: path
+        cors: true
+
+  # Please create the corresponding resources in the Google Cloud before deploying this service through Serverless
+  #function-name:
+  #  handler: event
+  #  events:
+  #    - event:
+  #        eventType: providers/cloud.pubsub/eventTypes/topic.publish
+  #        resource: projects/*/topics/my-topic
+
+# you can define resources, templates etc. the same way you would in a Google Cloud deployment configuration
+#resources:
+#  resources:
+#    - type: storage.v1.bucket
+#      name: my-serverless-service-bucket
+#  imports:
+#    - path: my_template.jinja
