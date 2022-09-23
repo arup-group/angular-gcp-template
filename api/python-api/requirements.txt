@@ -58,7 +58,7 @@ plotly==3.10.0
 ply==3.11
 prompt-toolkit==3.0.18
 proto-plus==1.13.0
-protobuf==3.14.0
+protobuf==3.18.3
 psycopg2-binary==2.8.6
 ptyprocess==0.7.0
 pyasn1==0.4.8
