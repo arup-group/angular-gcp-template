@@ -11,7 +11,7 @@ chardet==3.0.4
 click==7.1.2
 decorator==4.4.2
 et-xmlfile==1.0.1
-Flask==1.1.2
+Flask==2.3.2
 fsspec==0.8.7
 gcsfs==0.7.2
 google-api-core==1.25.1
